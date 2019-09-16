@@ -1,0 +1,155 @@
+1)
+	(a) CPU sockets-
+		cores- 4
+		CPUs- 4
+
+	(b) frequency CPU1- 1405.414 MHz
+		frequency CPU2- 799.945 MHz
+		frequency CPU3- 1000.476 MHz
+		frequency CPU4- 3100.000 MHz
+
+	(c) memory- 7816092 kB
+
+	(d) free memory- 4469536 kB
+		available memory- 6063440 kB
+		difference- free memory is the unused memory and available memory is the one which we can use. 
+
+	(e) total number of user-level processes- 213
+
+	(f) context switches- 46170184
+
+	(g) 0 bytes
+
+2) memory_1-
+			VmSize =  8136 kB
+			VmRSS = 776 kB
+   memory_2-
+			VmSize = 12044 kB
+			VmRSS = 636 kB
+
+   memory_3-
+			VmSize = 8136 kB
+			VmRSS = 3124 kB
+   memory_4-
+			VmSize = 8140 kB
+			VmRSS = 4944 kB
+
+VmSize of memory_2 is more than memory_1 as array size assigned is twice.
+
+VmRSS of memory_4 is higher as the number of iterations of for loop is higher in  that case.
+
+3) 21 subprocesses were created. the command used was-> ps -U to get the subprocesses
+
+4) output of strace of empty file is-> 
+
+execve("./empty", ["./empty"], [/* 64 vars */]) = 0
+brk(NULL)                               = 0xd11000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=125322, ...}) = 0
+mmap(NULL, 125322, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f1ad4eb8000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\t\2\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=1868984, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f1ad4eb7000
+mmap(NULL, 3971488, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f1ad48e8000
+mprotect(0x7f1ad4aa8000, 2097152, PROT_NONE) = 0
+mmap(0x7f1ad4ca8000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1c0000) = 0x7f1ad4ca8000
+mmap(0x7f1ad4cae000, 14752, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f1ad4cae000
+close(3)                                = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f1ad4eb6000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f1ad4eb5000
+arch_prctl(ARCH_SET_FS, 0x7f1ad4eb6700) = 0
+mprotect(0x7f1ad4ca8000, 16384, PROT_READ) = 0
+mprotect(0x600000, 4096, PROT_READ)     = 0
+mprotect(0x7f1ad4ed7000, 4096, PROT_READ) = 0
+munmap(0x7f1ad4eb8000, 125322)          = 0
+exit_group(0)                           = ?
++++ exited with 0 +++
+
+
+the different system calls are- execve, brk, open, fstat, mmap, close, access, read, mprotect, arch_prctl, munmap, exit_group.
+
+Total number of different system calls is 12
+
+stderr file of hello-
+
+execve("./hello", ["./hello"], [/* 64 vars */]) = 0
+brk(NULL)                               = 0x124f000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=125322, ...}) = 0
+mmap(NULL, 125322, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7feb8bf7a000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\t\2\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=1868984, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7feb8bf79000
+mmap(NULL, 3971488, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7feb8b9aa000
+mprotect(0x7feb8bb6a000, 2097152, PROT_NONE) = 0
+mmap(0x7feb8bd6a000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1c0000) = 0x7feb8bd6a000
+mmap(0x7feb8bd70000, 14752, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7feb8bd70000
+close(3)                                = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7feb8bf78000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7feb8bf77000
+arch_prctl(ARCH_SET_FS, 0x7feb8bf78700) = 0
+mprotect(0x7feb8bd6a000, 16384, PROT_READ) = 0
+mprotect(0x600000, 4096, PROT_READ)     = 0
+mprotect(0x7feb8bf99000, 4096, PROT_READ) = 0
+munmap(0x7feb8bf7a000, 125322)          = 0
+getpid()                                = 3528
+fstat(1, {st_mode=S_IFREG|0664, st_size=0, ...}) = 0
+brk(NULL)                               = 0x124f000
+brk(0x1271000)                          = 0x1271000
+fstat(0, {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 2), ...}) = 0
+read(0, "", 1024)                       = 0
+write(1, "\nProcess ID : 3528 \n\nEnter your "..., 50) = 50
+exit_group(0)                           = ?
++++ exited with 0 +++
+
+system calls-
+execve, brk, access, open, fstat, mmap, close, read, mprotect, arch_prctl, munmap, exit_group, getpid.
+
+The common part is-
+
+execve, brk, access, open, fstat, mmap, close, read, mprotect, arch_prctl, munmap, exit_group. That is all system calls except getpid(). (comman is from line 1 to 25)
+
+The differentpart is from getpid() onwards
+
+
+5) the files opened are-
+	/etc/ld.so.cache
+	/lib/x86_64-linux-gnu/libc.so.6
+	/tmp/welocme to OS
+	/tmp/CS333
+	/tmp/CS347
+
+redirected stderr of the executable to a file using strace and saw which files were opened- command=>
+strace ./openfiles > output 2> error
+
+6)
+command- lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0 55.9G  0 disk 
+|-sda1   8:1    0   55G  0 part /
+|-sda2   8:2    0    1K  0 part 
+`-sda5   8:5    0  975M  0 part [SWAP]
+
+command- df
+
+Filesystem                          1K-blocks       Used   Available Use% Mounted on
+udev                                  3887644          0     3887644   0% /dev
+tmpfs                                  781612      19356      762256   3% /run
+/dev/sda1                            56578364    7048204    46633060  14% /
+tmpfs                                 3908044       7512     3900532   1% /dev/shm
+tmpfs                                    5120          4        5116   1% /run/lock
+tmpfs                                 3908044          0     3908044   0% /sys/fs/cgroup
+freenas.cse.iitb.ac.in:/mnt/users 14810318208 1954431360 12855886848  14% /users
+tmpfs                                  781612        140      781472   1% /run/user/1000
+
+

@@ -1,0 +1,6 @@
+difference is -
+
+dw 0xaa55			; Last two bytes (one word) form the magic 
+				; number, so BIOS knows we are a boot sector
+
+It is creating an infinite loop in case of boot_sector2.
